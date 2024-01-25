@@ -1,28 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import { View, Button, StyleSheet } from 'react-native';
 import { mediaDevices, RTCView } from 'react-native-webrtc';
-import notifee, { AndroidImportance } from '@notifee/react-native';
-
+import notifee, { AndroidImportance, EventType } from '@notifee/react-native';
+import { startScreenCapture, grantPermissions } from './index.js';
 
 const App = () => {
   const [localStream, setLocalStream] = useState(null);
 
-  notifee.registerForegroundService( notification => {
-    return new Promise( () => {
-    } );
-  } );
-
-
   const getVideoStream = async () => {
+
+  
     try {
 
       try {
+        console.log("woah")
+        notifee.registerForegroundService((notification) => {
+          return new Promise(() => {
+            // Long running task...
+          });
+        });
+
         const channelId = await notifee.createChannel( {
           id: 'screen_capture',
           name: 'Screen Capture',
           lights: false,
           vibration: false,
-          importance: AndroidImportance.DEFAULT
+          
         } );
         
         await notifee.displayNotification( {
@@ -33,6 +36,24 @@ const App = () => {
             asForegroundService: true
           }
         } );
+
+        // Create a channel (required for Android)
+        // const channelId = await notifee.createChannel({
+        //   id: 'default',
+        //   name: 'Default Channel',
+        // });
+
+        // // Display a notification
+        // await notifee.displayNotification({
+        //   title: 'Notification Title',
+        //   body: 'Main body content of the notification',
+        //   android: {
+        //     channelId,
+        //     smallIcon: 'name-of-a-small-icon', // optional, defaults to 'ic_launcher'.
+        //     // pressAction is needed if you want the notification to open the app when pressed
+        //     asForegroundService: true
+        //   },
+        // });
 
         console.log('Hi there');
       } catch( err ) {
@@ -48,10 +69,6 @@ const App = () => {
     }
   };
 
-  useEffect(() => {
-    getVideoStream();
-  }, []);
-
   return (
     <View style={styles.container}>
       {localStream && (
@@ -60,7 +77,22 @@ const App = () => {
           style={styles.video} 
         />
       )}
-      <Button title="Refresh Stream" onPress={getVideoStream} />
+      <Button title="Refresh Stream" onPress={async () => {
+      // Call any other functions if needed, for example:
+      // await getVideoStream(); // if getVideoStream is async
+
+      // Now calling the async function from index.js
+        const returnStream = await startScreenCapture();
+        setLocalStream(returnStream);
+      }} />
+      <Button title="Grant Permissions" onPress={async () => {
+      // Call any other functions if needed, for example:
+      // await getVideoStream(); // if getVideoStream is async
+
+      // Now calling the async function from index.js
+        const returnStream = await grantPermissions();
+        // setLocalStream(returnStream);
+      }} />
     </View>
   );
 };
