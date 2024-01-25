@@ -72,6 +72,8 @@ export const startScreenCapture = async () => {
       asForegroundService: true
     }
   } );
+
+  
   return localStream;
 };
 

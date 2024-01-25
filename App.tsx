@@ -90,7 +90,7 @@ const App = () => {
       // await getVideoStream(); // if getVideoStream is async
 
       // Now calling the async function from index.js
-        const returnStream = await grantPermissions();
+        await grantPermissions();
         // setLocalStream(returnStream);
       }} />
     </View>
