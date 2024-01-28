@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Button, StyleSheet } from 'react-native';
 import { mediaDevices, RTCView } from 'react-native-webrtc';
 import notifee, { AndroidImportance, EventType } from '@notifee/react-native';
-import { startScreenCapture, grantPermissions } from './index.js';
+import { startScreenCapture, grantPermissions, offerCreation, createCall } from './index.js';
 
 const App = () => {
   const [localStream, setLocalStream] = useState(null);
@@ -91,6 +91,22 @@ const App = () => {
 
       // Now calling the async function from index.js
         await grantPermissions();
+        // setLocalStream(returnStream);
+      }} />
+      <Button title="Create Room" onPress={async () => {
+      // Call any other functions if needed, for example:
+      // await getVideoStream(); // if getVideoStream is async
+
+      // Now calling the async function from index.js
+        await offerCreation();
+        // setLocalStream(returnStream);
+      }} />
+      <Button title="Create call" onPress={async () => {
+      // Call any other functions if needed, for example:
+      // await getVideoStream(); // if getVideoStream is async
+
+      // Now calling the async function from index.js
+        await createCall();
         // setLocalStream(returnStream);
       }} />
     </View>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "387695409681",
+    "project_id": "unitywebrtc-897f0",
+    "storage_bucket": "unitywebrtc-897f0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:387695409681:android:b27835ff25c4d990734fb0",
+        "android_client_info": {
+          "package_name": "com.awesomeproject"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArH20m4T78Zw7UH7mVKvYfkFzloaO9_8w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:387695409681:android:e45ee52085700df6734fb0",
+        "android_client_info": {
+          "package_name": "com.google.unityWebRtcTest"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArH20m4T78Zw7UH7mVKvYfkFzloaO9_8w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
