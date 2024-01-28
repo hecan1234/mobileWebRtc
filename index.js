@@ -118,6 +118,7 @@ export const offerCreation = async () => {
     sdp: offerDescription.sdp,
     type: offerDescription.type,
   };
+  
   console.log(callDoc.id)
   await callDoc.set({ offer });
 
