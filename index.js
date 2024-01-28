@@ -19,10 +19,7 @@ import firestore from '@react-native-firebase/firestore';
 
 AppRegistry.registerComponent('AwesomeProject', () => App);
 
-const pc = new RTCPeerConnection(servers);
-let pc1Senders = [];
-let localStream = null;
-let remoteStream = null;
+
 
 const servers = {
   iceServers: [
@@ -33,6 +30,12 @@ const servers = {
   iceCandidatePoolSize: 10,
 };
 
+
+const pc = new RTCPeerConnection(servers);
+let pc1Senders = [];
+let localStream = null;
+
+var sender;
 
 notifee.registerForegroundService((notification) => {
   console.log('Notifee foreground service registered');
@@ -72,6 +75,7 @@ export const grantPermissions = async () => {
 };
 
 export const createCall = async () => {
+  console.log(localStream)
   localStream.getTracks().forEach((track) => {
     console.log("Add 1 track to stream");
 
@@ -129,6 +133,7 @@ export const offerCreation = async () => {
   });
 
   answerCandidates.onSnapshot((snapshot) => {
+    console.log("Ice candidot response")
     snapshot.docChanges().forEach((change) => {
       if (change.type === 'added') {
         const candidate = new RTCIceCandidate(change.doc.data());
