@@ -1,14 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { View, Button, StyleSheet } from 'react-native';
+import React, { useState, useEffect, useContext } from 'react';
+import { View, Button, StyleSheet, Text } from 'react-native';
 import { mediaDevices, RTCView } from 'react-native-webrtc';
 import notifee, { AndroidImportance, EventType } from '@notifee/react-native';
-import { startScreenCapture, grantPermissions, offerCreation, createCall, callDocId  } from './index.js';
+import { startScreenCapture, grantPermissions, offerCreation, createCall, callDocId,offerCreationNoAddTrack, useCustomId , generateFinalRoomAnswer } from './index.js';
+
 
 const App = () => {
   const [localStream, setLocalStream] = useState(null);
-
+  const { customId, setCustomId } = useCustomId();
+  const handlePress = () => {
+    console.log("HER0");
+    generateFinalRoomAnswer(setCustomId); // Pass `setCustomId` to the async function
+  };
   const getVideoStream = async () => {
-
   
     try {
 
@@ -60,9 +64,6 @@ const App = () => {
         console.error('oopse');
       };
       
-      const stream = await mediaDevices.getDisplayMedia();
-      setLocalStream(stream);
-
 
     } catch (e) {
       console.error('Error getting video stream:', e);
@@ -77,6 +78,9 @@ const App = () => {
           style={styles.video} 
         />
       )}
+      <Text style={styles.textStyle}>This is some text!</Text>
+      <Text style={styles.textStyle}>Custom ID: asdf{customId !== null ? customId : 'Not set'}</Text>
+
       <Button title="Refresh Stream" onPress={async () => {
       // Call any other functions if needed, for example:
       // await getVideoStream(); // if getVideoStream is async
@@ -85,28 +89,15 @@ const App = () => {
         const returnStream = await startScreenCapture();
         setLocalStream(returnStream);
       }} />
-      <Button title="Grant Permissions" onPress={async () => {
-      // Call any other functions if needed, for example:
-      // await getVideoStream(); // if getVideoStream is async
+      <Text style={styles.textStyle}>Custom ID: {customId || 'Not set'}</Text>
+      <Button title="Generate Room ID" onPress={handlePress} />
 
-      // Now calling the async function from index.js
-        await grantPermissions();
-        // setLocalStream(returnStream);
-      }} />
       <Button title="Create Room" onPress={async () => {
       // Call any other functions if needed, for example:
       // await getVideoStream(); // if getVideoStream is async
 
       // Now calling the async function from index.js
-        await offerCreation();
-        // setLocalStream(returnStream);
-      }} />
-      <Button title="Create call" onPress={async () => {
-      // Call any other functions if needed, for example:
-      // await getVideoStream(); // if getVideoStream is async
-
-      // Now calling the async function from index.js
-        await createCall();
+        await offerCreationNoAddTrack();
         // setLocalStream(returnStream);
       }} />
     </View>
@@ -124,6 +115,11 @@ const styles = StyleSheet.create({
     width: 300, // Set the width and height as needed
     height: 300,
     backgroundColor: 'black',
+  },
+  textStyle: {
+    color: 'black', // This sets the text color to black
+    fontSize: 16, // Optional: setting the font size
+    // Add other text styling properties as needed
   },
 });
 
