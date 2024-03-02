@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { View, Button, StyleSheet, Text } from 'react-native';
 import { mediaDevices, RTCView } from 'react-native-webrtc';
 import notifee, { AndroidImportance, EventType } from '@notifee/react-native';
-import { startScreenCapture, grantPermissions, offerCreation, createCall, callDocId,offerCreationNoAddTrack, useCustomId , generateFinalRoomAnswer } from './index.js';
+import { startScreenCapture, closePC, offerCreation, createCall, callDocId,offerCreationNoAddTrack, useCustomId , generateFinalRoomAnswer } from './index.js';
 
 
 const App = () => {
@@ -78,8 +78,7 @@ const App = () => {
           style={styles.video} 
         />
       )}
-      <Text style={styles.textStyle}>This is some text!</Text>
-      <Text style={styles.textStyle}>Custom ID: asdf{customId !== null ? customId : 'Not set'}</Text>
+      <Text style={styles.textStyle}>Custom ID: {customId || 'Not set'}</Text>
 
       <Button title="Refresh Stream" onPress={async () => {
       // Call any other functions if needed, for example:
@@ -89,7 +88,6 @@ const App = () => {
         const returnStream = await startScreenCapture();
         setLocalStream(returnStream);
       }} />
-      <Text style={styles.textStyle}>Custom ID: {customId || 'Not set'}</Text>
       <Button title="Generate Room ID" onPress={handlePress} />
 
       <Button title="Create Room" onPress={async () => {
@@ -98,6 +96,17 @@ const App = () => {
 
       // Now calling the async function from index.js
         await offerCreationNoAddTrack();
+        // setLocalStream(returnStream);
+      }} />
+
+      <Button title="close Stream" onPress={async () => {
+      // Call any other functions if needed, for example:
+      // await getVideoStream(); // if getVideoStream is async
+
+      // Now calling the async function from index.js
+        const returnStream = await closePC();
+        setLocalStream(returnStream);
+        setCustomId(0);
         // setLocalStream(returnStream);
       }} />
     </View>

@@ -38,20 +38,33 @@ const servers = {
 
 let globalRoomNum = 0;
 
-const pc = new RTCPeerConnection(servers);
+let pc;
 let pc1Senders = [];
 let localStream = null;
-let placeHolder = null;
-let captureStream = null;
-
-var sender;
+let notificationID;
+let resolveForegroundService;
 
 notifee.registerForegroundService((notification) => {
   console.log('Notifee foreground service registered');
-  return new Promise(() => {
+  return new Promise((resolve) => {
+    // Store the resolve function in a variable accessible outside this scope
+    resolveForegroundService = resolve;
     // Long running task...
+    // You can now call resolveForegroundService() to resolve this promise and stop the foreground service
   });
 });
+
+export const closePC = async () => {
+  pc1Senders = [];
+  localStream = null;
+  await notifee.cancelNotification(notificationID); 
+  if (resolveForegroundService) {
+    resolveForegroundService();
+  }
+  console.log("HI THERE")
+  pc.close();
+  return localStream;
+};
 
 export const generateFinalRoomAnswer = async (setCustomIdCallback) => {
   console.log("HI THERE")
@@ -70,6 +83,8 @@ export const generateFinalRoomAnswer = async (setCustomIdCallback) => {
 };
 
 export const startScreenCapture = async () => {
+  pc = new RTCPeerConnection(servers);
+
   // Async logic here
   const channelId = await notifee.createChannel( {
     id: 'screen_capture',
@@ -82,7 +97,7 @@ export const startScreenCapture = async () => {
   placeHolder = await mediaDevices.getDisplayMedia();
   
   
-  await notifee.displayNotification( {
+  notificationID = await notifee.displayNotification( {
     title: 'Screen Capture',
     body: 'This notification will be here until you stop capturing.',
     android: {
@@ -275,6 +290,6 @@ const AppRoot = () => (
   </CustomIdProvider>
 );
 
-AppRegistry.registerComponent(appName, () => AppRoot);
-
 export const useCustomId = () => useContext(CustomIdContext);
+
+AppRegistry.registerComponent(appName, () => AppRoot);
