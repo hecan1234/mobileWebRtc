@@ -1,13 +1,21 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { View, Button, StyleSheet, Text } from 'react-native';
-import { mediaDevices, RTCView } from 'react-native-webrtc';
+import { View, Button, StyleSheet, Text,findNodeHandle, NativeModules } from 'react-native';
+import { mediaDevices, RTCView, ScreenCapturePickerView } from 'react-native-webrtc';
 import notifee, { AndroidImportance, EventType } from '@notifee/react-native';
 import { startScreenCapture, closePC, offerCreation, createCall, callDocId,offerCreationNoAddTrack, useCustomId , generateFinalRoomAnswer } from './index.js';
+import ShareScreen from './index.js';
+import { startBroadcastOutSide} from './index.js'
 
-
-const App = () => {
+export default function App() {
   const [localStream, setLocalStream] = useState(null);
   const { customId, setCustomId } = useCustomId();
+  const screenCaptureView = React.useRef(null);
+
+  const startBroadcast = async () => {
+      const reactTag = findNodeHandle(screenCaptureView.current);
+      return NativeModules.ScreenCapturePickerViewManager.show(reactTag);
+  }
+
   const handlePress = () => {
     console.log("HER0");
     generateFinalRoomAnswer(setCustomId); // Pass `setCustomId` to the async function
@@ -78,16 +86,27 @@ const App = () => {
           style={styles.video} 
         />
       )}
+      <ScreenCapturePickerView ref={screenCaptureView} />
+
       <Text style={styles.textStyle}>Custom ID: {customId || 'Not set'}</Text>
+            
+      <Button title="Start BroadCast" onPress={async () => {
+        await startBroadcast()
+      }} />
+
 
       <Button title="Refresh Stream" onPress={async () => {
       // Call any other functions if needed, for example:
       // await getVideoStream(); // if getVideoStream is async
 
       // Now calling the async function from index.js
-        const returnStream = await startScreenCapture();
+        
+        const returnStream = await startScreenCapture(screenCaptureView.current);
+        console.log("In button");
+        console.log(returnStream)
         setLocalStream(returnStream);
       }} />
+      
       <Button title="Generate Room ID" onPress={handlePress} />
 
       <Button title="Create Room" onPress={async () => {
@@ -99,6 +118,15 @@ const App = () => {
         // setLocalStream(returnStream);
       }} />
 
+
+    <Button title="temp" onPress={async () => {
+      // Call any other functions if needed, for example:
+      // await getVideoStream(); // if getVideoStream is async
+
+      // Now calling the async function from index.js
+        await startBroadcastOutSide();
+        // setLocalStream(returnStream);
+      }} />
       <Button title="close Stream" onPress={async () => {
       // Call any other functions if needed, for example:
       // await getVideoStream(); // if getVideoStream is async

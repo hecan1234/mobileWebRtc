@@ -1,4 +1,4 @@
-import {AppRegistry} from 'react-native';
+import {AppRegistry, NativeModules, findNodeHandle} from 'react-native';
 import App from './App';
 import {name as appName} from './app.json';
 import React, { useState, useEffect, createContext, useContext } from 'react';
@@ -9,10 +9,10 @@ mediaDevices,
 RTCView,
 RTCPeerConnection,
 RTCIceCandidate,
-RTCSessionDescription
+RTCSessionDescription,
+ScreenCapturePickerView
 } 
 from 'react-native-webrtc';
-import notifee, { AndroidImportance, EventType } from '@notifee/react-native';
 
 import firebase from 'firebase/app';
 import firestore from '@react-native-firebase/firestore';
@@ -41,26 +41,12 @@ let globalRoomNum = 0;
 let pc;
 let pc1Senders = [];
 let localStream = null;
-let notificationID;
-let resolveForegroundService;
 
-notifee.registerForegroundService((notification) => {
-  console.log('Notifee foreground service registered');
-  return new Promise((resolve) => {
-    // Store the resolve function in a variable accessible outside this scope
-    resolveForegroundService = resolve;
-    // Long running task...
-    // You can now call resolveForegroundService() to resolve this promise and stop the foreground service
-  });
-});
 
 export const closePC = async () => {
   pc1Senders = [];
   localStream = null;
-  await notifee.cancelNotification(notificationID); 
-  if (resolveForegroundService) {
-    resolveForegroundService();
-  }
+
   console.log("HI THERE")
   pc.close();
   return localStream;
@@ -83,31 +69,25 @@ export const generateFinalRoomAnswer = async (setCustomIdCallback) => {
 };
 
 export const startScreenCapture = async () => {
+
   pc = new RTCPeerConnection(servers);
+    
+  
+  console.log("HI");
+  localStream = await mediaDevices.getDisplayMedia({ video: true, audio: true });
+  //localStream = await mediaDevices.getUserMedia( mediaConstraints );
+  
+  console.log(localStream);
+ 
 
-  // Async logic here
-  const channelId = await notifee.createChannel( {
-    id: 'screen_capture',
-    name: 'Screen Capture',
-    lights: true,
-    vibration: true,
-  } );
-  
 
-  placeHolder = await mediaDevices.getDisplayMedia();
-  
-  
-  notificationID = await notifee.displayNotification( {
-    title: 'Screen Capture',
-    body: 'This notification will be here until you stop capturing.',
-    android: {
-      channelId,
-      asForegroundService: true
-    }
-  } );
-  localStream = await mediaDevices.getDisplayMedia();
+
+  console.log(localStream);
+  console.log("AM HERE");
   await offerCreation()
   return localStream;
+
+  
 };
 
 export const grantPermissions = async () => {
@@ -183,14 +163,7 @@ export const offerCreationNoAddTrack = async () => {
       if (change.type === 'added') {
         const candidate = new RTCIceCandidate(change.doc.data());
         pc.addIceCandidate(candidate);
-        console.log("HERE")
-        // const params = sender.getParameters();
-        // console.log(params)
-        // if (!params.codecs.length) {
-        //     console.log("No codec information available");
-        //     return;
-        // }
-      
+        console.log("HERE")      
       }
     });
   });
@@ -273,6 +246,48 @@ export const offerCreation = async () => {
 
 
 };
+
+//export const createCall = async () => 
+
+
+export const startBroadcastOutSide = async () => {
+  const screenCaptureView = React.useRef(null);
+  const reactTag = findNodeHandle(screenCaptureView.current);
+  return NativeModules.ScreenCapturePickerViewManager.show(reactTag);
+}
+
+export default function ShareScreen() {
+  const screenCaptureView = React.useRef(null);
+
+
+
+  const updateStream = async () => {
+    let mediaConstraints = {
+      audio: true,
+      video: {
+        frameRate: 30,
+        facingMode: 'user'
+      }
+    };  
+    pc = new RTCPeerConnection(servers);
+    
+  
+    console.log("HI");
+    localStream = await mediaDevices.getDisplayMedia({ video: true, audio: true });
+    //localStream = await mediaDevices.getUserMedia( mediaConstraints );
+  
+    console.log(localStream);
+    console.log("AM HERE");
+    //await offerCreation()
+  };
+
+  return (
+      <View>
+          <ScreenCapturePickerView ref={screenCaptureView} />
+          <Button title = "startBroadcast" onPress={startBroadcast}/>
+          <Button title = "start" onPress={updateStream}/>
+      </View>)
+}
 
 export const CustomIdProvider = ({ children }) => {
   const [customId, setCustomId] = useState(null);

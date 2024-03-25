@@ -15,6 +15,16 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		C844CAA82BA617E900C89912 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C844CAA72BA617E900C89912 /* GoogleService-Info.plist */; };
+		C8B1EA512BAFB5A100D9E678 /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8569CA22BAF8D6F00D62DF2 /* ReplayKit.framework */; };
+		C8B1EA582BAFB5A100D9E678 /* screenExt.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = C8B1EA502BAFB5A100D9E678 /* screenExt.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C8B1EA5F2BAFB65300D9E678 /* DarwinNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B1EA5D2BAFB65300D9E678 /* DarwinNotificationCenter.swift */; };
+		C8B1EA602BAFB65300D9E678 /* Atomic.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B1EA5E2BAFB65300D9E678 /* Atomic.swift */; };
+		C8B1EA642BAFB66E00D9E678 /* SampleUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B1EA612BAFB66E00D9E678 /* SampleUploader.swift */; };
+		C8B1EA652BAFB66E00D9E678 /* SocketConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B1EA622BAFB66E00D9E678 /* SocketConnection.swift */; };
+		C8B1EA662BAFB66E00D9E678 /* SampleHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B1EA632BAFB66E00D9E678 /* SampleHandler.swift */; };
+		C8E1965A2BB1BB9000B1F663 /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8569CA22BAF8D6F00D62DF2 /* ReplayKit.framework */; };
+		C8E1965D2BB1BB9000B1F663 /* SampleHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E1965C2BB1BB9000B1F663 /* SampleHandler.swift */; };
+		C8E196612BB1BB9000B1F663 /* screenSharingExt.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = C8E196592BB1BB9000B1F663 /* screenSharingExt.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,7 +35,36 @@
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
 			remoteInfo = AwesomeProject;
 		};
+		C8B1EA562BAFB5A100D9E678 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C8B1EA4F2BAFB5A100D9E678;
+			remoteInfo = screenExt;
+		};
+		C8E1965F2BB1BB9000B1F663 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C8E196582BB1BB9000B1F663;
+			remoteInfo = screenSharingExt;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C8569CAB2BAF8D6F00D62DF2 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				C8B1EA582BAFB5A100D9E678 /* screenExt.appex in Embed Foundation Extensions */,
+				C8E196612BB1BB9000B1F663 /* screenSharingExt.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		00E356EE1AD99517003FC87E /* AwesomeProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AwesomeProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,6 +84,19 @@
 		89C6BE57DB24E9ADA2F236DE /* Pods-AwesomeProject-AwesomeProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AwesomeProject-AwesomeProjectTests.release.xcconfig"; path = "Target Support Files/Pods-AwesomeProject-AwesomeProjectTests/Pods-AwesomeProject-AwesomeProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		BC6355D38A1D043B4F0F68EF /* Pods_AwesomeProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AwesomeProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C844CAA72BA617E900C89912 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C8569CA22BAF8D6F00D62DF2 /* ReplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReplayKit.framework; path = System/Library/Frameworks/ReplayKit.framework; sourceTree = SDKROOT; };
+		C8569CB02BAF90E500D62DF2 /* AwesomeProject.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = AwesomeProject.entitlements; path = AwesomeProject/AwesomeProject.entitlements; sourceTree = "<group>"; };
+		C8B1EA502BAFB5A100D9E678 /* screenExt.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = screenExt.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8B1EA552BAFB5A100D9E678 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C8B1EA5C2BAFB62300D9E678 /* screenExt.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = screenExt.entitlements; sourceTree = "<group>"; };
+		C8B1EA5D2BAFB65300D9E678 /* DarwinNotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DarwinNotificationCenter.swift; path = "../../../temp2/jitsi-meet-sdk-samples/ios/swift-screensharing/JitsiSDKScreenSharingTest/Broadcast Extension/DarwinNotificationCenter.swift"; sourceTree = "<group>"; };
+		C8B1EA5E2BAFB65300D9E678 /* Atomic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Atomic.swift; path = "../../../temp2/jitsi-meet-sdk-samples/ios/swift-screensharing/JitsiSDKScreenSharingTest/Broadcast Extension/Atomic.swift"; sourceTree = "<group>"; };
+		C8B1EA612BAFB66E00D9E678 /* SampleUploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SampleUploader.swift; path = "../../../temp2/jitsi-meet-sdk-samples/ios/swift-screensharing/JitsiSDKScreenSharingTest/Broadcast Extension/SampleUploader.swift"; sourceTree = "<group>"; };
+		C8B1EA622BAFB66E00D9E678 /* SocketConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketConnection.swift; path = "../../../temp2/jitsi-meet-sdk-samples/ios/swift-screensharing/JitsiSDKScreenSharingTest/Broadcast Extension/SocketConnection.swift"; sourceTree = "<group>"; };
+		C8B1EA632BAFB66E00D9E678 /* SampleHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SampleHandler.swift; path = "../../../temp2/jitsi-meet-sdk-samples/ios/swift-screensharing/JitsiSDKScreenSharingTest/Broadcast Extension/SampleHandler.swift"; sourceTree = "<group>"; };
+		C8E196592BB1BB9000B1F663 /* screenSharingExt.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = screenSharingExt.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8E1965C2BB1BB9000B1F663 /* SampleHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleHandler.swift; sourceTree = "<group>"; };
+		C8E1965E2BB1BB9000B1F663 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -62,6 +114,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E7AC62FC552BD03B09ECA45 /* Pods_AwesomeProject.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C8B1EA4D2BAFB5A100D9E678 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C8B1EA512BAFB5A100D9E678 /* ReplayKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C8E196562BB1BB9000B1F663 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C8E1965A2BB1BB9000B1F663 /* ReplayKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +156,7 @@
 		13B07FAE1A68108700A75B9A /* AwesomeProject */ = {
 			isa = PBXGroup;
 			children = (
+				C8569CB02BAF90E500D62DF2 /* AwesomeProject.entitlements */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -104,6 +173,7 @@
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				BC6355D38A1D043B4F0F68EF /* Pods_AwesomeProject.framework */,
 				6E30582F998EC3E2ADB0B763 /* Pods_AwesomeProject_AwesomeProjectTests.framework */,
+				C8569CA22BAF8D6F00D62DF2 /* ReplayKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -122,6 +192,8 @@
 				13B07FAE1A68108700A75B9A /* AwesomeProject */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* AwesomeProjectTests */,
+				C8B1EA522BAFB5A100D9E678 /* screenExt */,
+				C8E1965B2BB1BB9000B1F663 /* screenSharingExt */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
@@ -136,6 +208,8 @@
 			children = (
 				13B07F961A680F5B00A75B9A /* AwesomeProject.app */,
 				00E356EE1AD99517003FC87E /* AwesomeProjectTests.xctest */,
+				C8B1EA502BAFB5A100D9E678 /* screenExt.appex */,
+				C8E196592BB1BB9000B1F663 /* screenSharingExt.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -149,6 +223,29 @@
 				89C6BE57DB24E9ADA2F236DE /* Pods-AwesomeProject-AwesomeProjectTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		C8B1EA522BAFB5A100D9E678 /* screenExt */ = {
+			isa = PBXGroup;
+			children = (
+				C8B1EA632BAFB66E00D9E678 /* SampleHandler.swift */,
+				C8B1EA612BAFB66E00D9E678 /* SampleUploader.swift */,
+				C8B1EA622BAFB66E00D9E678 /* SocketConnection.swift */,
+				C8B1EA5E2BAFB65300D9E678 /* Atomic.swift */,
+				C8B1EA5D2BAFB65300D9E678 /* DarwinNotificationCenter.swift */,
+				C8B1EA5C2BAFB62300D9E678 /* screenExt.entitlements */,
+				C8B1EA552BAFB5A100D9E678 /* Info.plist */,
+			);
+			path = screenExt;
+			sourceTree = "<group>";
+		};
+		C8E1965B2BB1BB9000B1F663 /* screenSharingExt */ = {
+			isa = PBXGroup;
+			children = (
+				C8E1965C2BB1BB9000B1F663 /* SampleHandler.swift */,
+				C8E1965E2BB1BB9000B1F663 /* Info.plist */,
+			);
+			path = screenSharingExt;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,15 +284,52 @@
 				00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */,
 				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
 				8EE6C9F8FDFD4459AAEACB1C /* [CP-User] [RNFB] Core Configuration */,
+				C8569CAB2BAF8D6F00D62DF2 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				C8B1EA572BAFB5A100D9E678 /* PBXTargetDependency */,
+				C8E196602BB1BB9000B1F663 /* PBXTargetDependency */,
 			);
 			name = AwesomeProject;
 			productName = AwesomeProject;
 			productReference = 13B07F961A680F5B00A75B9A /* AwesomeProject.app */;
 			productType = "com.apple.product-type.application";
+		};
+		C8B1EA4F2BAFB5A100D9E678 /* screenExt */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C8B1EA592BAFB5A100D9E678 /* Build configuration list for PBXNativeTarget "screenExt" */;
+			buildPhases = (
+				C8B1EA4C2BAFB5A100D9E678 /* Sources */,
+				C8B1EA4D2BAFB5A100D9E678 /* Frameworks */,
+				C8B1EA4E2BAFB5A100D9E678 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = screenExt;
+			productName = screenExt;
+			productReference = C8B1EA502BAFB5A100D9E678 /* screenExt.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		C8E196582BB1BB9000B1F663 /* screenSharingExt */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C8E196622BB1BB9000B1F663 /* Build configuration list for PBXNativeTarget "screenSharingExt" */;
+			buildPhases = (
+				C8E196552BB1BB9000B1F663 /* Sources */,
+				C8E196562BB1BB9000B1F663 /* Frameworks */,
+				C8E196572BB1BB9000B1F663 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = screenSharingExt;
+			productName = screenSharingExt;
+			productReference = C8E196592BB1BB9000B1F663 /* screenSharingExt.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -203,7 +337,9 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1210;
+				BuildIndependentTargetsInParallel = YES;
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 1530;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
@@ -211,6 +347,12 @@
 					};
 					13B07F861A680F5B00A75B9A = {
 						LastSwiftMigration = 1120;
+					};
+					C8B1EA4F2BAFB5A100D9E678 = {
+						CreatedOnToolsVersion = 15.3;
+					};
+					C8E196582BB1BB9000B1F663 = {
+						CreatedOnToolsVersion = 15.3;
 					};
 				};
 			};
@@ -229,6 +371,8 @@
 			targets = (
 				13B07F861A680F5B00A75B9A /* AwesomeProject */,
 				00E356ED1AD99517003FC87E /* AwesomeProjectTests */,
+				C8B1EA4F2BAFB5A100D9E678 /* screenExt */,
+				C8E196582BB1BB9000B1F663 /* screenSharingExt */,
 			);
 		};
 /* End PBXProject section */
@@ -248,6 +392,20 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				C844CAA82BA617E900C89912 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C8B1EA4E2BAFB5A100D9E678 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C8E196572BB1BB9000B1F663 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +573,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C8B1EA4C2BAFB5A100D9E678 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C8B1EA5F2BAFB65300D9E678 /* DarwinNotificationCenter.swift in Sources */,
+				C8B1EA642BAFB66E00D9E678 /* SampleUploader.swift in Sources */,
+				C8B1EA662BAFB66E00D9E678 /* SampleHandler.swift in Sources */,
+				C8B1EA602BAFB65300D9E678 /* Atomic.swift in Sources */,
+				C8B1EA652BAFB66E00D9E678 /* SocketConnection.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C8E196552BB1BB9000B1F663 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C8E1965D2BB1BB9000B1F663 /* SampleHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -423,6 +601,16 @@
 			target = 13B07F861A680F5B00A75B9A /* AwesomeProject */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
+		C8B1EA572BAFB5A100D9E678 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C8B1EA4F2BAFB5A100D9E678 /* screenExt */;
+			targetProxy = C8B1EA562BAFB5A100D9E678 /* PBXContainerItemProxy */;
+		};
+		C8E196602BB1BB9000B1F663 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C8E196582BB1BB9000B1F663 /* screenSharingExt */;
+			targetProxy = C8E1965F2BB1BB9000B1F663 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
@@ -430,7 +618,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-AwesomeProject-AwesomeProjectTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 37F6TPXXJU;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -457,8 +648,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-AwesomeProject-AwesomeProjectTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = 37F6TPXXJU;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = AwesomeProjectTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -481,10 +675,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-AwesomeProject.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = AwesomeProject/AwesomeProject.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 37F6TPXXJU;
 				ENABLE_BITCODE = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = AwesomeProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -508,9 +706,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-AwesomeProject.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = AwesomeProject/AwesomeProject.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 37F6TPXXJU;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = AwesomeProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -562,6 +764,7 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "i386 arm64";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -653,6 +856,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -704,6 +908,166 @@
 			};
 			name = Release;
 		};
+		C8B1EA5A2BAFB5A100D9E678 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = screenExt/screenExt.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 37F6TPXXJU;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = screenExt/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = screenExt;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.hecan.webrtcone.screenExt;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C8B1EA5B2BAFB5A100D9E678 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = screenExt/screenExt.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 37F6TPXXJU;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = screenExt/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = screenExt;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.hecan.webrtcone.screenExt;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C8E196632BB1BB9000B1F663 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 37F6TPXXJU;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = screenSharingExt/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = screenSharingExt;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.hecan.webrtcone.screenSharingExt;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C8E196642BB1BB9000B1F663 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 37F6TPXXJU;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = screenSharingExt/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = screenSharingExt;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.hecan.webrtcone.screenSharingExt;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -730,6 +1094,24 @@
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
 				83CBBA211A601CBA00E9B192 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C8B1EA592BAFB5A100D9E678 /* Build configuration list for PBXNativeTarget "screenExt" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C8B1EA5A2BAFB5A100D9E678 /* Debug */,
+				C8B1EA5B2BAFB5A100D9E678 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C8E196622BB1BB9000B1F663 /* Build configuration list for PBXNativeTarget "screenSharingExt" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C8E196632BB1BB9000B1F663 /* Debug */,
+				C8E196642BB1BB9000B1F663 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
